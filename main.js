@@ -9,22 +9,24 @@ app.use(parser.json());
 app.use(express.static(__dirname + '/public'))
 
 app.get('/api/projects', function (req, res, next) {
-  res.json('PONG');
+  res.status(200).json('OK');
   return next();
 });
 
 app.post('/api/projects', function (req, res, next) {
-  res.status(404).json('NotFound');
+  res.status(400).json('BadRequest');
+  res.status(200).json('OK');
   return next();
 });
 
-app.get('/api/projects/:id spec', function (req, res, next) {
-  res.status(400).json('BadRequest');
+app.get('/api/projects/:id', function (req, res, next) {
+  res.status(404).json('NotFound');
+  res.status(200).json('OK');
   return next();
 })
 
 app.delete('/api/projects/:id',function(req,res,next){
-	res.status(200).jspm('OK');
+	res.status(200).json('OK');
 	return next();
 })
 
